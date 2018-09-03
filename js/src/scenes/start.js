@@ -2,9 +2,16 @@ import Scene from '../base/scene'
 
 //导入当前场景中的角色
 import flappyBirdTitle from '../roles/start/birdtitle'
+import sky from '../roles/start/sky'
+import bird from '../roles/start/bird'
+import rePlay from '../roles/start/replay'
 
 export default new Scene({
     roles:[
-        flappyBirdTitle
+        sky,
+        flappyBirdTitle,
+        bird,
+        rePlay,
+       
     ]
 })

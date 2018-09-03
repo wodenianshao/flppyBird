@@ -8,5 +8,7 @@ export default {
     resources:{
         images:{},
         audio:{}
-    }
+    },
+    screenWdith : window.innerWidth,
+    screenHeight : window.innerHeight
 }
