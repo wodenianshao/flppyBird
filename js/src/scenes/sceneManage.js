@@ -3,7 +3,7 @@
  * 1 管理游戏中的所有场景
  * 2 渲染场景
  * 3 切换场景
- * 3 处理当前场景的事件
+ * 4 处理当前场景的事件
  */
 import start from './start'
 import ready from './ready'
@@ -11,12 +11,12 @@ import running from './running'
 export default {
     //游戏场景集合
     scenesList:{
-        running,
         ready,
         start,
-       
+        running,
     },
-    currentSceneName: 'running',
+    //当前场景
+    currentSceneName: 'start',
     //渲染场景
     render(ctx,delta){
         //根据当前场景的名称，获取当前场景
@@ -27,7 +27,15 @@ export default {
     /**
      * 切换场景
      */
-    changeScene(){
-
+    changeScene(sceneName){
+        //切换场景时决定是否复用上一个场景中的角色
+        this.currentSceneName = sceneName
+    },
+    /**
+     * 触发当前场景的事件
+     * @param {object} e 事件对象
+     */
+    click(e){
+        this.scenesList[this.currentSceneName].click(e)
     }
 }

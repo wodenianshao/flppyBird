@@ -36,3 +36,24 @@
 - 适配层 [Adapter] (https://developers.weixin.qq.com/minigame/dev/tutorial/base/adapter.html)
 
 ## RenderingContext -渲染上下文支持说明 rct 
+```js
+    // 获取到绘制上下文
+    const ctx = canvas.getContext('2d')
+```
+
+## 事件处理
+- 说明: canvas 整体是一个对象，所以，如果需要给canvas中的某个具体的角色绑定事件需要自己处理
+- 给cavas中特定角色绑定事件的原理:
+ - 1 得到这个角色的坐标（startX,startY,endX,endY）
+ - 2 判断点击处坐标是不是在角色坐标内部
+ ```js
+    const clientX = e.touches[0].clientX
+    const clientY = e.touches[0].clientY
+    //遍历当前场景中的所有角色，分别触发每个角色的绑定事件
+    this.roles.forEach( role =>{
+        if (clientX >= role.x && clientX <= (role.x + role.width) && clientY >= role.y && clientY <= (role.y + role.height) ){
+            //触发角色的点击事件
+            role.click()
+        }
+    })
+ ```

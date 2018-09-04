@@ -30,7 +30,7 @@ for (let i = 0; i < 3; i++) {
             let dataIndex = config.fram.IMG_Frams_LIST.animations[upimgName][0]
             let data = config.fram.IMG_Frams_LIST.frames[dataIndex]
             ctx.drawImage(databus.resources.images[this.img], data[0], data[1], data[2], data[3], this.x, this.y, this.width, this.height)
-            let downimgName = 'pipe_up'
+            let downimgName = 'pipe2_up'
             let dataIndexs = config.fram.IMG_Frams_LIST.animations[downimgName][0]
             let datas = config.fram.IMG_Frams_LIST.frames[dataIndexs]
             ctx.drawImage(databus.resources.images[this.img], datas[0], datas[1], datas[2], datas[3], this.x, this.bottomY, this.width, this.height)

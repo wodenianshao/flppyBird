@@ -22,16 +22,21 @@ export default class Sprite{
     /**
      * 初始化游戏角色的时候执行的操作
      */
-    init(){
-    }
+    init(){}
     /**
      * 如果角色会动，实现角色自己动的方式
      */
-    update(){
-    }
+    update(){}
     //渲染自己的方法
     render(ctx,delta){
         // console.log(databus.resources.images,this.img)
         ctx.drawImage(databus.resources.images[this.img],this.x,this.y,this.width,this.height)
+    }
+    /**
+     * 单击事件
+     * @param {单击事件} e 
+     */
+    click(){
+
     }
 }

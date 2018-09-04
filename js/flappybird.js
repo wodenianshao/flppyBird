@@ -35,6 +35,10 @@ export default class Flappybird {
         this.curFrameTime = new Date() - 0
         this.lastFrameTime = new Date() - 0
         window.requestAnimationFrame(this.render)
+        //绑定事件
+        canvas.addEventListener('touchstart',(e) =>{
+          sceneManage.click(e)
+        })
       })
   }
 

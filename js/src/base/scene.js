@@ -27,4 +27,18 @@ export default class Scene{
         // }
         this.update()
     }
+
+    click(e){
+        //点击点的坐标        
+        // console.log(e)
+        const clientX = e.touches[0].clientX
+        const clientY = e.touches[0].clientY
+        //遍历当前场景中的所有角色，分别触发每个角色的绑定事件
+        this.roles.forEach( role =>{
+            if (clientX >= role.x && clientX <= (role.x + role.width) && clientY >= role.y && clientY <= (role.y + role.height) ){
+                //触发角色的点击事件
+                role.click()
+            }
+        })
+    }
 }
