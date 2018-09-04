@@ -7,8 +7,23 @@ var num = 0
 export default new Sprite({
     img: 'imgGather',
     ...config.gameInfo.bird,
-    render(ctx) {
-        if (num > config.gameInfo.bird.speed) {
+    speed: 0,
+    render(ctx, delta) {
+        //小鸟下落，采用 匀加速直线运动
+        // S = V * t + 1/2 * t * t
+        // V = v0 + a * t
+        this.speed = this.speed + config.gameInfo.bird.a * delta
+        this.y += (this.speed * delta + (1 / 2) * delta * delta) * 30
+        if (this.y > 210) {
+            this.speed = -4.5
+        }
+        if (this.y > 210){
+            this.y = 180
+        }   
+        /**
+        * 播放小鸟飞行动画
+        */
+        if (num > config.gameInfo.bird.wingSpeed) {
             num = 0
             index += 1
             if (index > 2) {

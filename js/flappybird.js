@@ -3,6 +3,7 @@
  * 作用：
  * 1 加载游戏中的所有资源
  * 2 等资源加载完成，开启游戏主循环
+ * 3 控制游戏时间
  */
 /**
  * 导入游戏配置文件
@@ -13,7 +14,7 @@
  */
 import config from '../js/config/config'
 import databus from './databus'
-import sceneManage from './src/scenes/index'
+import sceneManage from './src/scenes/sceneManage'
 // 获取到绘制上下文
 const ctx = canvas.getContext('2d')
 export default class Flappybird {
@@ -28,14 +29,22 @@ export default class Flappybird {
       .then(() => {
         //加载完成
         // console.log(databus.resources)
+        //提供游戏时间
+        //时间间隔 = 当前帧时间 - 上一帧时间
+        this.delta = 0
+        this.curFrameTime = new Date() - 0
+        this.lastFrameTime = new Date() - 0
         window.requestAnimationFrame(this.render)
       })
   }
 
   render() {
-    // console.log("render")
+    // 获取时间间隔
+    this.curFrameTime = new Date() - 0
+    this.delta = (this.curFrameTime - this.lastFrameTime) / 1000
+    this.lastFrameTime = this.curFrameTime
     //1 渲染当前场景
-    sceneManage.render(ctx)
+    sceneManage.render(ctx, this.delta)
     window.requestAnimationFrame(this.render)
   }
 

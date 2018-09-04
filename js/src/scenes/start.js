@@ -5,6 +5,7 @@ import flappyBirdTitle from '../roles/start/birdtitle'
 import sky from '../roles/start/sky'
 import bird from '../roles/start/bird'
 import rePlay from '../roles/start/replay'
+import landList from '../roles/start/land'
 
 export default new Scene({
     roles:[
@@ -12,6 +13,6 @@ export default new Scene({
         flappyBirdTitle,
         bird,
         rePlay,
-       
+        ...landList
     ]
 })

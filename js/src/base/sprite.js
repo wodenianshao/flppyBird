@@ -20,7 +20,7 @@ export default class Sprite{
     }
 
     //渲染自己的方法
-    render(ctx){
+    render(ctx,delta){
         // console.log(databus.resources.images,this.img)
         ctx.drawImage(databus.resources.images[this.img],this.x,this.y,this.width,this.height)
     }

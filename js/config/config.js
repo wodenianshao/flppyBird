@@ -180,13 +180,20 @@ const gameInfo = {
         y: 180,
         width: 48,
         height: 48,
-        speed: 13,
+        wingSpeed: 13,
+        a:9.8  //加速度
     },
     replay: {
         x: (screenWidth - 116) / 2,
         y: (screenHeight - 70) / 3 * 2,
         width: 116,
         height: 70,
+    },
+    land: {
+        x: 0,
+        y: screenHeight-112,
+        width: 336,
+        height: 112,
     },
 }
 

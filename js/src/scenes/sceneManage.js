@@ -13,11 +13,11 @@ export default {
     },
     currentSceneName: 'start',
     //渲染场景
-    render(ctx){
+    render(ctx,delta){
         //根据当前场景的名称，获取当前场景
         //并且渲染当前场景
         // console.log("渲染当前场景",this.currentSceneName,this.scenesList[this.currentSceneName])
-        this.scenesList[this.currentSceneName].render(ctx)
+        this.scenesList[this.currentSceneName].render(ctx,delta)
     },
     /**
      * 切换场景

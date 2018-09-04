@@ -11,9 +11,9 @@ export default class Scene{
      * 渲染当前场景
      * 遍历当前场景中所有的角色对象，分别调用每个角色的渲染自己的方法
      */
-    render(ctx){
+    render(ctx,delta){
         this.roles.forEach(role => {
-            role.render(ctx)
+            role.render(ctx,delta)
         });
         //roles 是对象的时候
         // for(let role in this.roles){
