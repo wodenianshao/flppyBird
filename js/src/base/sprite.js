@@ -17,8 +17,18 @@ export default class Sprite{
         for (var k in config) {
             this[k] = config[k]
         }
+        this.init()
     }
-
+    /**
+     * 初始化游戏角色的时候执行的操作
+     */
+    init(){
+    }
+    /**
+     * 如果角色会动，实现角色自己动的方式
+     */
+    update(){
+    }
     //渲染自己的方法
     render(ctx,delta){
         // console.log(databus.resources.images,this.img)

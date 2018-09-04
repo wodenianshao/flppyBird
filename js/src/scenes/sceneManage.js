@@ -6,12 +6,17 @@
  * 3 处理当前场景的事件
  */
 import start from './start'
+import ready from './ready'
+import running from './running'
 export default {
     //游戏场景集合
     scenesList:{
-        start
+        running,
+        ready,
+        start,
+       
     },
-    currentSceneName: 'start',
+    currentSceneName: 'running',
     //渲染场景
     render(ctx,delta){
         //根据当前场景的名称，获取当前场景

@@ -174,6 +174,7 @@ const gameInfo = {
         y: 0,
         width: screenWidth,
         height: screenHeight,
+        speed:-2,
     },
     bird: {
         x: (screenWidth - 48) / 2,
@@ -194,6 +195,36 @@ const gameInfo = {
         y: screenHeight-112,
         width: 336,
         height: 112,
+        speed:-2,
+    },
+    tap: {
+        x: (screenWidth - 114) / 2,
+        y: (screenHeight - 70) / 3 * 2,
+        width: 114,
+        height: 98,
+    },
+    getReady: {
+        x: (screenWidth - 196) / 2,
+        y: 100,
+        width: 196,
+        height: 62,
+    },
+    birdReady: {
+        x: (screenWidth - 48) / 3,
+        y: 100,
+        width: 48,
+        height: 48,
+        wingSpeed: 13,
+        a:9.8  //加速度
+    },
+    pipe: {
+        x: 0,
+        y: 0,
+        width: 52,
+        height: 320,
+        verticalGap:150, //垂直间距
+        horizontalGap:130, //水平间距
+        speed:-2,
     },
 }
 
