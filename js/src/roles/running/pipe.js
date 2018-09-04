@@ -14,6 +14,19 @@ for (let i = 0; i < 3; i++) {
         init(){
             this.setPipeY()
         },
+        setPosition(){
+            const position ={
+                startX : this.x,
+                startY : this.y,
+                endX :this.x + this.width,
+                endY: this.y + this.height
+            }
+
+            this.position ={
+                top:position,
+                bottom:{...position,startY:this.bottomY,endY:this.bottomY + this.height}
+            }
+        },
         setPipeY(){
             const randomHeight = Math.random() * 200 + 120
             //上管道的y坐标
@@ -42,6 +55,8 @@ for (let i = 0; i < 3; i++) {
                 //管道重新进入时，再次设置管道Y坐标
                 this.setPipeY()
             }
+            //记录管道坐标
+            this.setPosition()
         }
     })
     pipeList.push(pipeSprite)
