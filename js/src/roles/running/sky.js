@@ -9,6 +9,9 @@ for (let i = 0; i < 2; i++) {
         img: 'imgGather',
         ...config.gameInfo.sky,
         x: i * config.gameInfo.sky.width,
+        init(){
+            this.x = i * config.gameInfo.sky.width
+        },
         render(ctx) {
             let imgName = 'bg_night'
             let dataIndex = config.fram.IMG_Frams_LIST.animations[imgName][0]

@@ -226,6 +226,12 @@ const gameInfo = {
         horizontalGap:130, //水平间距
         speed:-2,
     },
+    gameOver: {
+        x: (screenWidth - 204) / 2,
+        y: 100,
+        width: 204,
+        height: 54,
+    },
 }
 
 const config = {

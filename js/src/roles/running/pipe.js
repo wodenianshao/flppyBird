@@ -9,10 +9,14 @@ for (let i = 0; i < 3; i++) {
         img: 'imgGather',
         ...config.gameInfo.pipe,
         //每个管道的x坐标
+        scoreMark:false,
         x: databus.screenWdith + (config.gameInfo.pipe.width + config.gameInfo.pipe.horizontalGap) * i,
         bottomY: 0,
         init() {
+            //重置X，Y坐标
+            this.x = databus.screenWdith + (config.gameInfo.pipe.width + config.gameInfo.pipe.horizontalGap) * i,
             this.setPipeY()
+            this.setPosition()
         },
         setPosition() {
             const position = {
@@ -48,14 +52,18 @@ for (let i = 0; i < 3; i++) {
             ctx.drawImage(databus.resources.images[this.img], datas[0], datas[1], datas[2], datas[3], this.x, this.bottomY, this.width, this.height)
         },
         update() {
-            this.x += this.speed
-            if (this.x <= -(this.width + this.horizontalGap)) {
-                this.x += (this.width + this.horizontalGap) * 3
-                //管道重新进入时，再次设置管道Y坐标
-                this.setPipeY()
+            if (!databus.gameOver) {
+                this.x += this.speed
+                if (this.x <= -(this.width + this.horizontalGap)) {
+                    this.x += (this.width + this.horizontalGap) * 3
+                    //管道重新进入时，再次设置管道Y坐标
+                    this.setPipeY()
+                    //重新设置积分标志
+                    this.scoreMark = false
+                }
+                //记录管道坐标
+                this.setPosition()
             }
-            //记录管道坐标
-            this.setPosition()
         }
     })
     pipeList.push(pipeSprite)

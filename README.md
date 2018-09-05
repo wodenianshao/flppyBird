@@ -57,3 +57,15 @@
         }
     })
  ```
+
+ ## 碰撞检测
+ - 小鸟与管道碰撞的处理思路:
+   - 1 
+     - 1 取小鸟的中心点
+     - 2 为了提高精确度，将小鸟抽象成一个正方形取四个点
+     - 3 像素碰撞 https://blog.csdn.net/nzb329/article/details/52054252
+   - 2 获取所有(上下)管道的四个点
+     - 1 (上)-->(this.x,this.y,this.x + this.width, this.y + this.height)
+     - 2 (下)-->(this.x,this.bottomY,this.x + this.width,this.bottomY + this.height )
+   - 3 判断小鸟中心点是否与管道有包含(碰撞)
+

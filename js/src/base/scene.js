@@ -47,4 +47,16 @@ export default class Scene{
             }
         })
     }
+    /**
+     * 当前场景复用上一个场景的角色
+     */
+    reuse(roles){
+
+    }
+    /**
+     * 初始化场景中所有角色的初始化坐标
+     */
+    init(){
+
+    }
 }

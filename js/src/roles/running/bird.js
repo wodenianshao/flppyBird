@@ -13,6 +13,11 @@ export default new Sprite({
     img: 'imgGather',
     ...config.gameInfo.birdReady,
     speed: 0,
+    init(){
+        this.x = config.gameInfo.birdReady.x
+        this.y = config.gameInfo.birdReady.y
+        this.speed = 0
+    },
     render(ctx, delta) {
         //小鸟下落，采用 匀加速直线运动
         // S = V * t + 1/2 * t * t

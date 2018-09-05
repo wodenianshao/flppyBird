@@ -8,12 +8,14 @@
 import start from './start'
 import ready from './ready'
 import running from './running'
+import gameOver from './gameOver'
 export default {
     //游戏场景集合
     scenesList:{
         ready,
         start,
         running,
+        gameOver,
     },
     //当前场景
     currentSceneName: 'start',
@@ -29,6 +31,8 @@ export default {
      */
     changeScene(sceneName){
         //切换场景时决定是否复用上一个场景中的角色
+        this.scenesList[sceneName].reuse(this.scenesList[this.currentSceneName].roles)
+        this.scenesList[sceneName].init()
         this.currentSceneName = sceneName
     },
     /**

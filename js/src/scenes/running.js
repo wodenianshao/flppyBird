@@ -6,6 +6,7 @@ import bird from '../roles/running/bird'
 import pipeList from '../roles/running/pipe'
 import landList from '../roles/running/land'
 import databus from '../../databus'
+import sceneManage from '../scenes/sceneManage'
 export default new Scene({
     roles: [
         ...skyList,
@@ -15,17 +16,26 @@ export default new Scene({
     ],
     bird,
     pipeList,
+    land: landList[0],
+
+    //初始化当前场景中所有角色的坐标
+    init() {
+        this.roles.forEach(role => {
+            role.init()
+        });
+    },
+
     click(e) {
         // console.log(this.roles[2])
         //提供一个向上的负速度
         this.bird.speed = -7
     },
 
-    iscollisionDection(pipe, bird) {
-        if (bird.x >= pipe.startX && bird.x <= pipe.endX && bird.y >= pipe.startY && bird.y <= pipe.endY) {
-            return true
-        }
-        return false
+    /**
+     * 是否与陆地碰撞
+     */
+    isLanded() {
+        return this.bird.y >= this.land.y
     },
     /**
      * 碰撞检测
@@ -37,10 +47,40 @@ export default new Scene({
             return this.iscollisionDection(pipe.position.top, this.bird) || this.iscollisionDection(pipe.position.bottom, this.bird)
         })
     },
+
+    iscollisionDection(pipe, bird) {
+        if (bird.x >= pipe.startX && bird.x <= pipe.endX && bird.y >= pipe.startY && bird.y <= pipe.endY) {
+            return true
+        }
+        return false
+    },
+
+    /**
+     * 
+     * @param {游戏积分} delta 
+     */
+    setScore() {
+        this.pipeList.forEach(pipe => {
+            if(!pipe.scoreMark && this.bird.x >= (pipe.x + pipe.width)){
+                pipe.scoreMark = true
+                databus.score += 1
+                console.log('score',databus.score)
+            }
+        })
+    },
+
     update(delta) {
         // console.log("发生碰撞",this.pipeList)
-        if (this.collisionDection()) {
+        if (!databus.gameOver) {
+            if (this.collisionDection()) {
+                databus.gameOver = true
+            }
+            //积分
+            this.setScore()
+        }
+        if (this.isLanded()) {
             databus.gameOver = true
+            sceneManage.changeScene('gameOver')
         }
     }
 })

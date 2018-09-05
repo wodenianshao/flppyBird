@@ -11,5 +11,10 @@ export default {
     },
     screenWdith: window.innerWidth,
     screenHeight: window.innerHeight,
-    gameOver: false
+    gameOver: false,
+    //游戏积分
+    score: 0,
+    bestScore: 0
+
+
 }

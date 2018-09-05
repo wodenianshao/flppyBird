@@ -7,6 +7,7 @@ import bird from '../roles/ready/bird'
 import tap from '../roles/ready/tap'
 import landList from '../roles/ready/land'
 import sceneManage from '../scenes/sceneManage'
+import databus from '../../databus'
 
 export default new Scene({
     roles:[
@@ -18,6 +19,7 @@ export default new Scene({
     ],
 
     click(e){
+        databus.gameOver = false
         sceneManage.changeScene('running')
     }
 })
