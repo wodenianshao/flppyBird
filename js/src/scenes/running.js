@@ -5,7 +5,7 @@ import skyList from '../roles/running/sky'
 import bird from '../roles/running/bird'
 import pipeList from '../roles/running/pipe'
 import landList from '../roles/running/land'
-
+import databus from '../../databus'
 export default new Scene({
     roles: [
         ...skyList,
@@ -21,8 +21,8 @@ export default new Scene({
         this.bird.speed = -7
     },
 
-    iscollisionDection(pipe,bird){
-        if (bird.x >= pipe.startX && bird.x <= pipe.endX && bird.y >= pipe.endY && bird.y <= pipe.endY){
+    iscollisionDection(pipe, bird) {
+        if (bird.x >= pipe.startX && bird.x <= pipe.endX && bird.y >= pipe.startY && bird.y <= pipe.endY) {
             return true
         }
         return false
@@ -33,13 +33,14 @@ export default new Scene({
     collisionDection() {
         //遍历所有的管道对象，判断小鸟中心点坐标在不在管道内
         // console.log("遍历所有的管道对象，判断小鸟中心点坐标在不在管道内")
-       return pipeList.some(pipe =>{
-            return this.iscollisionDection(pipe.position.top,this.bird) || this.iscollisionDection(pipe.position.bottom,this.bird)
+        return this.pipeList.some(pipe => {
+            return this.iscollisionDection(pipe.position.top, this.bird) || this.iscollisionDection(pipe.position.bottom, this.bird)
         })
     },
-    update(){
-       if(this.collisionDection()){
-           console.log("发生碰撞")
-       }
+    update(delta) {
+        // console.log("发生碰撞",this.pipeList)
+        if (this.collisionDection()) {
+            databus.gameOver = true
+        }
     }
 })

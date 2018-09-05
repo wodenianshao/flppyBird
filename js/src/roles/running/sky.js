@@ -10,7 +10,7 @@ for (let i = 0; i < 2; i++) {
         ...config.gameInfo.sky,
         x: i * config.gameInfo.sky.width,
         render(ctx) {
-            let imgName = 'bg_day'
+            let imgName = 'bg_night'
             let dataIndex = config.fram.IMG_Frams_LIST.animations[imgName][0]
             let data = config.fram.IMG_Frams_LIST.frames[dataIndex]
             ctx.drawImage(databus.resources.images[this.img], data[0], data[1], data[2], data[3], this.x, this.y, this.width, this.height)

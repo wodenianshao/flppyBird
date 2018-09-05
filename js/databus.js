@@ -5,10 +5,11 @@
  */
 export default {
     //游戏资源
-    resources:{
-        images:{},
-        audio:{}
+    resources: {
+        images: {},
+        audio: {}
     },
-    screenWdith : window.innerWidth,
-    screenHeight : window.innerHeight
+    screenWdith: window.innerWidth,
+    screenHeight: window.innerHeight,
+    gameOver: false
 }

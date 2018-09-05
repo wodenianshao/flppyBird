@@ -10,24 +10,23 @@ for (let i = 0; i < 3; i++) {
         ...config.gameInfo.pipe,
         //每个管道的x坐标
         x: databus.screenWdith + (config.gameInfo.pipe.width + config.gameInfo.pipe.horizontalGap) * i,
-        bottomY:0,
-        init(){
+        bottomY: 0,
+        init() {
             this.setPipeY()
         },
-        setPosition(){
-            const position ={
-                startX : this.x,
-                startY : this.y,
-                endX :this.x + this.width,
+        setPosition() {
+            const position = {
+                startX: this.x,
+                startY: this.y,
+                endX: this.x + this.width,
                 endY: this.y + this.height
             }
-
-            this.position ={
-                top:position,
-                bottom:{...position,startY:this.bottomY,endY:this.bottomY + this.height}
+            this.position = {
+                top: position,
+                bottom: { ...position, startY: this.bottomY, endY: this.bottomY + this.height }
             }
         },
-        setPipeY(){
+        setPipeY() {
             const randomHeight = Math.random() * 200 + 120
             //上管道的y坐标
             this.y = randomHeight - this.height
@@ -48,9 +47,9 @@ for (let i = 0; i < 3; i++) {
             let datas = config.fram.IMG_Frams_LIST.frames[dataIndexs]
             ctx.drawImage(databus.resources.images[this.img], datas[0], datas[1], datas[2], datas[3], this.x, this.bottomY, this.width, this.height)
         },
-        update(){
+        update() {
             this.x += this.speed
-            if(this.x <= -(this.width + this.horizontalGap)){
+            if (this.x <= -(this.width + this.horizontalGap)) {
                 this.x += (this.width + this.horizontalGap) * 3
                 //管道重新进入时，再次设置管道Y坐标
                 this.setPipeY()
