@@ -3,6 +3,7 @@ import Sprite from '../../base/sprite'
 import databus from '../../../databus'
 import config from '../../../config/config'
 import sceneManage from '../../scenes/sceneManage'
+import music from '../../music/musicManage'
 export default new Sprite({
     img: 'imgGather',
     ...config.gameInfo.replay,
@@ -13,6 +14,7 @@ export default new Sprite({
         ctx.drawImage(databus.resources.images[this.img], data[0], data[1], data[2], data[3], this.x, this.y, this.width, this.height)
     },
     click(){
+        music.playMusicByName('readyGo')
         sceneManage.changeScene('ready')
     }
 })

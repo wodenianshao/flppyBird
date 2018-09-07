@@ -22,7 +22,9 @@ export default class Scene{
 
     render(ctx,delta){
         this.roles.forEach(role => {
-            role.render(ctx,delta)
+            if(role.isCanRender()){
+                role.render(ctx,delta)
+            }
             if(!databus.gameOver){
                 role.update()
             }

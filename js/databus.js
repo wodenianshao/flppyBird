@@ -7,14 +7,15 @@ export default {
     //游戏资源
     resources: {
         images: {},
-        audio: {}
+        audios: {}
     },
     screenWdith: window.innerWidth,
     screenHeight: window.innerHeight,
     gameOver: false,
     //游戏积分
     score: 0,
-    bestScore: 0
+    bestScore: 0,
+    lastBestScore:0
 
 
 }

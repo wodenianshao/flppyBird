@@ -17,6 +17,7 @@ for (let i = 0; i < 3; i++) {
             this.x = databus.screenWdith + (config.gameInfo.pipe.width + config.gameInfo.pipe.horizontalGap) * i,
             this.setPipeY()
             this.setPosition()
+            this.scoreMark = false
         },
         setPosition() {
             const position = {

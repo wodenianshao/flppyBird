@@ -74,7 +74,7 @@ export default class Flappybird {
         } else if (resName.endsWith('.mp3')) {
           resource = new Audio()
           resource.src = `js/resfile/audio/${resName}`
-          databus.resources.audio[resName.slice(0, -4)] = resource
+          databus.resources.audios[resName.slice(0, -4)] = resource
         }
         //监听加载资源完成的事件
         resource.addEventListener('load', () => {

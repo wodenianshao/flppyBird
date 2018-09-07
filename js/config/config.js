@@ -10,7 +10,11 @@ const IMG_NAME_LIST = [
 ]
 
 const MUSIC_NAME_LIST = [
-    "10549.mp3"
+    "readyGo.mp3",
+    "birdFly.mp3",
+    "fail.mp3",
+    "bingbian.mp3",
+    "hongzhaojun.mp3",
 ]
 
 const IMG_Frams_LIST = {
@@ -235,10 +239,42 @@ const gameInfo = {
     score: {
         x: (screenWidth - 24) / 2,
         y: 60,
-        width:24,
-        height:44,
-        gap:2,
-    }
+        width: 24,
+        height: 44,
+        gap: 2,
+    },
+    scorepanel: {
+        x: (screenWidth - 238) / 2,
+        y: (screenHeight - 112 - 126) * 1 / 2,
+        width: 238,
+        height: 126,
+    },
+    new: {
+        x: (screenWidth - 238) / 2 + 38,
+        y: (screenHeight - 112 - 126) * 1 / 2 + 126 * 3 / 4,
+        width: 32,
+        height: 14,
+    },
+    gameOverScore: {
+        x: (screenWidth - 238) / 2 + 238 * 5.3 / 7,
+        y: (screenHeight - 112 - 126) * 1 / 2 + 126 * 2 / 7,
+        width: 16,
+        height: 20,
+        gap: 2,
+    },
+    gameOverBestScore: {
+        x: (screenWidth - 238) / 2 + 238 * 5.3 / 7,
+        y: (screenHeight - 112 - 126) * 1 / 2 + 126 * 4.4 / 7,
+        width: 16,
+        height: 20,
+        gap: 2,
+    },
+    quality: {
+        x: (screenWidth - 238) / 2 + 238 * 1.1 / 8,
+        y: (screenHeight - 112 - 126) * 1 / 2 + 126 * 1.05 / 3,
+        width: 44,
+        height: 44,
+    },
 }
 
 const numImg = [
@@ -254,6 +290,24 @@ const numImg = [
     'font_057',
 ]
 
+const resultScoreImg = [
+    'number_score_00',
+    'number_score_01',
+    'number_score_02',
+    'number_score_03',
+    'number_score_04',
+    'number_score_05',
+    'number_score_06',
+    'number_score_07',
+    'number_score_08',
+    'number_score_09',
+]
+
+const backBgMusic = [
+    "bingbian",
+    "hongzhaojun",
+]
+
 const config = {
     //游戏资源
     resources: {
@@ -265,5 +319,7 @@ const config = {
     },
     gameInfo,
     numImg,
+    resultScoreImg,
+    backBgMusic,
 }
 export default config

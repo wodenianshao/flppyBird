@@ -27,6 +27,11 @@ export default class Sprite{
      * 如果角色会动，实现角色自己动的方式
      */
     update(){}
+
+    isCanRender()
+    {
+        return true
+    }
     //渲染自己的方法
     render(ctx,delta){
         // console.log(databus.resources.images,this.img)

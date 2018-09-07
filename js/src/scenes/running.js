@@ -8,6 +8,8 @@ import landList from '../roles/running/land'
 import score from '../roles/running/score'
 import databus from '../../databus'
 import sceneManage from '../scenes/sceneManage'
+import music from '../music/musicManage'
+import config from '../../config/config';
 export default new Scene({
     roles: [
         ...skyList,
@@ -25,11 +27,16 @@ export default new Scene({
         this.roles.forEach(role => {
             role.init()
         });
+        // 0 - 2
+        let index = Math.ceil(Math.random() * 1)
+        console.log(index)
+        music.playMusicByName(config.backBgMusic[index], true)
     },
 
     click(e) {
         //提供一个向上的负速度
         if (!databus.gameOver) {
+            music.playMusicByName('birdFly')
             this.bird.speed = -7
         }
     },
@@ -39,6 +46,10 @@ export default new Scene({
      */
     isLanded() {
         return this.bird.y >= this.land.y
+    },
+
+    isFlyTooHeight() {
+        return this.bird.y <= 0
     },
     /**
      * 碰撞检测
@@ -67,6 +78,9 @@ export default new Scene({
             if (!pipe.scoreMark && this.bird.x >= (pipe.x + pipe.width)) {
                 pipe.scoreMark = true
                 databus.score += 1
+                if (databus.score > databus.bestScore) {
+                    databus.bestScore = databus.score
+                }
             }
         })
     },
@@ -76,11 +90,18 @@ export default new Scene({
         if (!databus.gameOver) {
             if (this.collisionDection()) {
                 databus.gameOver = true
+                music.playMusicByName('fail')
             }
             //积分
             this.setScore()
         }
+        if (this.isFlyTooHeight()){
+            databus.gameOver = true
+        }
         if (this.isLanded()) {
+            if (!this.collisionDection()) {
+                music.playMusicByName('fail')
+            }
             databus.gameOver = true
             sceneManage.changeScene('gameOver')
         }

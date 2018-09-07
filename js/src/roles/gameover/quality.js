@@ -2,22 +2,25 @@
 import Sprite from '../../base/sprite'
 import databus from '../../../databus'
 import config from '../../../config/config'
-import sceneManage from '../../scenes/sceneManage'
-import music from '../../music/musicManage'
 export default new Sprite({
     img: 'imgGather',
-    ...config.gameInfo.replay,
+    ...config.gameInfo.quality,
     render(ctx) {
-        let imgName = 'button_play'
+        let index = 0
+        if (databus.bestScore > 2) {
+            index = 1
+            if (databus.bestScore > 3) {
+                index = 2
+                if (databus.bestScore > 5) {
+                    if (databus.bestScore > databus.lastBestScore) {
+                        index = 3
+                    }
+                }
+            }
+        }
+        let imgName = `medals_${index}`
         let dataIndex = config.fram.IMG_Frams_LIST.animations[imgName][0]
         let data = config.fram.IMG_Frams_LIST.frames[dataIndex]
         ctx.drawImage(databus.resources.images[this.img], data[0], data[1], data[2], data[3], this.x, this.y, this.width, this.height)
-    },
-    click(){
-        if(databus.bestScore > databus.lastBestScore){
-            databus.lastBestScore = databus.bestScore
-        }
-        music.stopMusic()
-        sceneManage.changeScene('ready')
     }
 })
