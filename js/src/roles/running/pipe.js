@@ -35,7 +35,12 @@ for (let i = 0; i < 3; i++) {
             //上管道的y坐标
             this.y = randomHeight - this.height
             //下管道的y坐标
-            this.bottomY = randomHeight + this.verticalGap
+            // 48 - 150
+            let verticalGap = this.verticalGap 
+            if (databus.score >= 53115){
+                verticalGap = Math.random() * 50 + 48
+            }
+            this.bottomY = randomHeight + verticalGap
         },
         /**
          * 绘制上下管道

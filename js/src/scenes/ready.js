@@ -20,6 +20,7 @@ export default new Scene({
 
     click(e){
         databus.gameOver = false
+        databus.score = 0
         sceneManage.changeScene('running')
     }
 })

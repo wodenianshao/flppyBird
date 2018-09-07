@@ -5,6 +5,7 @@ import skyList from '../roles/running/sky'
 import bird from '../roles/running/bird'
 import pipeList from '../roles/running/pipe'
 import landList from '../roles/running/land'
+import score from '../roles/running/score'
 import databus from '../../databus'
 import sceneManage from '../scenes/sceneManage'
 export default new Scene({
@@ -13,6 +14,7 @@ export default new Scene({
         ...pipeList,
         ...landList,
         bird,
+        score,
     ],
     bird,
     pipeList,
@@ -26,9 +28,10 @@ export default new Scene({
     },
 
     click(e) {
-        // console.log(this.roles[2])
         //提供一个向上的负速度
-        this.bird.speed = -7
+        if (!databus.gameOver) {
+            this.bird.speed = -7
+        }
     },
 
     /**
@@ -61,10 +64,9 @@ export default new Scene({
      */
     setScore() {
         this.pipeList.forEach(pipe => {
-            if(!pipe.scoreMark && this.bird.x >= (pipe.x + pipe.width)){
+            if (!pipe.scoreMark && this.bird.x >= (pipe.x + pipe.width)) {
                 pipe.scoreMark = true
                 databus.score += 1
-                console.log('score',databus.score)
             }
         })
     },

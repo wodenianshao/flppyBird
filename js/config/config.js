@@ -174,7 +174,7 @@ const gameInfo = {
         y: 0,
         width: screenWidth,
         height: screenHeight,
-        speed:-2,
+        speed: -2,
     },
     bird: {
         x: (screenWidth - 48) / 2,
@@ -182,7 +182,7 @@ const gameInfo = {
         width: 48,
         height: 48,
         wingSpeed: 13,
-        a:9.8  //加速度
+        a: 9.8  //加速度
     },
     replay: {
         x: (screenWidth - 116) / 2,
@@ -192,10 +192,10 @@ const gameInfo = {
     },
     land: {
         x: 0,
-        y: screenHeight-112,
+        y: screenHeight - 112,
         width: 336,
         height: 112,
-        speed:-2,
+        speed: -2,
     },
     tap: {
         x: (screenWidth - 114) / 2,
@@ -215,24 +215,44 @@ const gameInfo = {
         width: 48,
         height: 48,
         wingSpeed: 13,
-        a:9.8  //加速度
+        a: 9.8  //加速度
     },
     pipe: {
         x: 0,
         y: 0,
         width: 52,
         height: 320,
-        verticalGap:150, //垂直间距
-        horizontalGap:130, //水平间距
-        speed:-2,
+        verticalGap: 150, //垂直间距
+        horizontalGap: 130, //水平间距
+        speed: -2,
     },
     gameOver: {
         x: (screenWidth - 204) / 2,
-        y: 100,
+        y: 110,
         width: 204,
         height: 54,
     },
+    score: {
+        x: (screenWidth - 24) / 2,
+        y: 60,
+        width:24,
+        height:44,
+        gap:2,
+    }
 }
+
+const numImg = [
+    'font_048',
+    'font_049',
+    'font_050',
+    'font_051',
+    'font_052',
+    'font_053',
+    'font_054',
+    'font_055',
+    'font_056',
+    'font_057',
+]
 
 const config = {
     //游戏资源
@@ -244,5 +264,6 @@ const config = {
         IMG_Frams_LIST
     },
     gameInfo,
+    numImg,
 }
 export default config
