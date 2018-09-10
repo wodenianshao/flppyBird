@@ -16,8 +16,9 @@ export default new Sprite({
             score = score / 10
         }
         let numTotalLength = (this.width * numList.length + ((numList.length - 1) * this.gap)) / 2
-        for (let i = numList.length - 1; i >= 0; i--) {
-            let x = (this.x - numTotalLength + this.width / 2) + (this.gap + this.width) * (numList.length - 1 - i)
+        for (let i = 0; i < numList.length; i++) {
+            //右对齐
+            let x = this.x - (this.gap + this.width) * i
             let imgname = config.resultScoreImg[numList[i]]
             let dataIndex = config.fram.IMG_Frams_LIST.animations[imgname][0]
             let data = config.fram.IMG_Frams_LIST.frames[dataIndex]

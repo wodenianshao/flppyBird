@@ -256,18 +256,18 @@ const gameInfo = {
         height: 14,
     },
     gameOverScore: {
-        x: (screenWidth - 238) / 2 + 238 * 5.3 / 7,
+        x: (screenWidth - 238) / 2 + 238 * 5.5 / 7,
         y: (screenHeight - 112 - 126) * 1 / 2 + 126 * 2 / 7,
         width: 16,
         height: 20,
-        gap: 2,
+        gap: -2,
     },
     gameOverBestScore: {
-        x: (screenWidth - 238) / 2 + 238 * 5.3 / 7,
+        x: (screenWidth - 238) / 2 + 238 * 5.5 / 7,
         y: (screenHeight - 112 - 126) * 1 / 2 + 126 * 4.4 / 7,
         width: 16,
         height: 20,
-        gap: 2,
+        gap: -2,
     },
     quality: {
         x: (screenWidth - 238) / 2 + 238 * 1.1 / 8,
