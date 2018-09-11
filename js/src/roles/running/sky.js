@@ -20,7 +20,7 @@ for (let i = 0; i < 2; i++) {
         },
     
         update() {
-            this.x += this.speed
+            // this.x += this.speed
             if (this.x <= -this.width){
                 this.x += this.width * 2
             }

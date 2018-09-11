@@ -10,7 +10,10 @@ for (let i = 0; i < 3; i++) {
         ...config.gameInfo.pipe,
         //每个管道的x坐标
         scoreMark:false,
+        autoMark:false,
         x: databus.screenWdith + (config.gameInfo.pipe.width + config.gameInfo.pipe.horizontalGap) * i,
+        pipeHeight: config.gameInfo.pipe.height,
+        verticalGap: config.gameInfo.pipe.verticalGap,
         bottomY: 0,
         init() {
             //重置X，Y坐标
@@ -18,13 +21,15 @@ for (let i = 0; i < 3; i++) {
             this.setPipeY()
             this.setPosition()
             this.scoreMark = false
+            this.autoMark = false
         },
         setPosition() {
             const position = {
                 startX: this.x,
                 startY: this.y,
                 endX: this.x + this.width,
-                endY: this.y + this.height
+                endY: this.y + this.height,
+                middle: this.pipeHeight + this.x + this.verticalGap / 2
             }
             this.position = {
                 top: position,

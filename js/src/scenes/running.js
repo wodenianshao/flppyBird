@@ -21,7 +21,7 @@ export default new Scene({
     bird,
     pipeList,
     land: landList[0],
-
+    count: 0,
     //初始化当前场景中所有角色的坐标
     init() {
         this.roles.forEach(role => {
@@ -29,7 +29,7 @@ export default new Scene({
         });
         // 0 - 2
         let index = Math.ceil(Math.random() * 1)
-        console.log(index)
+        // console.log(index)
         music.playMusicByName(config.backBgMusic[index], true)
     },
 
@@ -84,9 +84,38 @@ export default new Scene({
             }
         })
     },
+    /**
+     * 1 当小鸟处于中间位置时开启检测(小鸟与下一个管道间距<=horizontalGap/2)
+     * 2 计算出精确的小鸟与下一个管道的距离，已知管道速度，计算出管道达到的时间
+     * 3 计算出小鸟当前的坐标和管道中心点坐标的垂直距离，由上一步得出的时间到的上升或者下降的速度
+     */
+    getNextPipe() {
+        let nextPipe = null
+        this.pipeList.forEach(pipe => {
+            if (!pipe.autoMark && pipe.x - this.bird.x >= 0 && (pipe.x - this.bird.x <= 110)) { //config.gameInfo.pipe.horizontalGap * 2 / 3
+                nextPipe = pipe
+                pipe.autoMark = true
+            }
+        })
+        return nextPipe
+    },
+
+    getSpeed(pipe) {
+        // let s_j = pipe.x - this.bird.x
+        // let a = 9.8
+        // if (s_j > 0) {
+        //     a = -9.8
+        // }
+        // let t1 = s_j / Math.abs(config.gameInfo.pipe.speed)  //刚开始时小鸟距离钢管的时间
+        // let s_u = (pipe.position.top.middle - this.bird.y) / 30
+        // let t2 = Math.sqrt(Math.abs(s_u / (1 / 2 - a)))      //上升的时间
+        // let v0 = a * t2
+        // let s_max_h = s_j + Math.abs(config.gameInfo.pipe.speed) * (t2 + t1)
+        // return v0
+    },
 
     update(delta) {
-        // console.log("发生碰撞",this.pipeList)
+        // console.log("发生碰撞", this.pipeList)
         if (!databus.gameOver) {
             if (this.collisionDection()) {
                 databus.gameOver = true
@@ -94,8 +123,12 @@ export default new Scene({
             }
             //积分
             this.setScore()
+            let nextPipe = this.getNextPipe()
+            if (nextPipe) {
+                // this.bird.speed = this.getSpeed(nextPipe)
+            }
         }
-        if (this.isFlyTooHeight()){
+        if (this.isFlyTooHeight()) {
             databus.gameOver = true
         }
         if (this.isLanded()) {
